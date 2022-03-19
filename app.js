@@ -2,6 +2,7 @@ import express from 'express';
 import taskRoutes from './routes/tasks.js';
 import connectDB from './db/connect.js';
 import notFound from './middleware/not-found.js';
+import errorHandler from './middleware/error-handler.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/v1/tasks', taskRoutes);
 
 app.use(notFound);
+app.use(errorHandler);
 
 const port = 5000;
 
